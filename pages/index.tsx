@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import Layout from '../components/Layout';
+import { Keyboard } from '../interfaces/index';
 import { getKeyboards } from '../use-cases/keyboards';
+import Layout from '../components/Layout';
 
 const IndexPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -30,12 +31,12 @@ const IndexPage = () => {
       </button>
 
       {keyboards.length ? (
-        keyboards.map(keyboard => (
-          <ul key={keyboard.id}>
-            <ol>{keyboard.brand}</ol>
-            <ol>{keyboard.model}</ol>
-            <ol>{keyboard.layout}</ol>
-          </ul>
+        keyboards.map((keyboard: Keyboard) => (
+          <ol key={keyboard.id}>
+            <li>{keyboard.brand}</li>
+            <li>{keyboard.model}</li>
+            <li>{keyboard.layout}</li>
+          </ol>
         ))
       ) : (
         <p>No keyboards loaded yet!</p>
